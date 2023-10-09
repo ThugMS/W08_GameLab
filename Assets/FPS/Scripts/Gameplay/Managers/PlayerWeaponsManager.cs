@@ -83,6 +83,7 @@ namespace Unity.FPS.Gameplay
         WeaponController[] m_WeaponSlots = new WeaponController[9]; // 9 available weapon slots
         PlayerInputHandler m_InputHandler;
         PlayerCharacterController m_PlayerCharacterController;
+        
         float m_WeaponBobFactor;
         Vector3 m_LastCharacterPosition;
         Vector3 m_WeaponMainLocalPosition;
@@ -147,6 +148,7 @@ namespace Unity.FPS.Gameplay
                 // Handle accumulating recoil
                 if (hasFired)
                 {
+                    CameraEffect.instance.ShotEffect();
                     m_AccumulatedRecoil += Vector3.back * activeWeapon.RecoilForce;
                     m_AccumulatedRecoil = Vector3.ClampMagnitude(m_AccumulatedRecoil, MaxRecoilDistance);
                 }
